@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^$', 
 TemplateView.as_view(template_name='static_pages/index.html'), 
 name='home'),
+    path('accounts/', include('django.contrib.auth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += static(settings.STATIC_URL, 
