@@ -36,8 +36,7 @@ def send_registration_emails(modeladmin, request, queryset):
             reverse('password_reset_confirm', kwargs={'uidb64': uid, 'token': token})
         )
 
-        # Link za registracijo
-        registration_link = f"https://django.fbeu.eu/welcome?email={user.email}"
+        
 
         # Poslji e-mail
         username = EMAIL_HOST_USER
