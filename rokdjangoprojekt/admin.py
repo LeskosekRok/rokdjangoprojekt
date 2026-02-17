@@ -46,7 +46,6 @@ def send_registration_emails(modeladmin, request, queryset):
         msg['From'] = username
         msg['To'] = user.email
         msg.set_content(f"Pozdravljeni {user.first_name},\n\n"
-                        f"Prosimo obiscite {registration_link}, da vidite svoj racun.\n"
                         f"Za nastavitev gesla, kliknite sem: {reset_link}\n\n"
                         f"Hvala!")
         with smtplib.SMTP_SSL(EMAIL_HOST, EMAIL_PORT) as smtp:

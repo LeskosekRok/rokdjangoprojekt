@@ -9,7 +9,6 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('welcome/', views.registration_welcome, name='registration_welcome'),
     url(r'^$', 
 TemplateView.as_view(template_name='static_pages/index.html'), 
 name='home'),
