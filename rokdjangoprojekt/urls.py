@@ -5,7 +5,6 @@ from django.conf.urls.static import static
 #from django.conf.urls import url
 from django.urls import re_path as url
 from django.views.generic.base import TemplateView
-from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
