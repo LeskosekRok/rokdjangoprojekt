@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prijava</title>
+</head>
+<body>
+    <h2>Prijava</h2>
+
+    {% if form.errors %}
+    <p style="color:red;">Neveljavno uporabnisko ime ali geslo.</p>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Prijava</button>
+    </form>
+
+</body>
+</html>

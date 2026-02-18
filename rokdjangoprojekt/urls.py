@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 #from django.conf.urls import url
 from django.urls import re_path as url
 from django.views.generic.base import TemplateView
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,6 +13,7 @@ urlpatterns = [
 TemplateView.as_view(template_name='static_pages/index.html'), 
 name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/profile/', views.profile, name='profile'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += static(settings.STATIC_URL, 

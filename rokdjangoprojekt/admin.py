@@ -6,7 +6,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.urls import reverse
 from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
-
+from django.utils.crypto import get_random_string
 from rokdjangoprojekt.settings import EMAIL_HOST, EMAIL_HOST_PASSWORD, EMAIL_HOST_USER, EMAIL_PORT
 
 from .models import Ucitelj
@@ -24,7 +24,7 @@ def send_registration_emails(modeladmin, request, queryset):
                 username=ucitelj.eposta,
                 email=ucitelj.eposta,
                 first_name=ucitelj.ime,
-                password=User.objects.make_random_password()
+                password=get_random_string(12)
             )
 
         # Generiraj token za ponastavitev gesla
