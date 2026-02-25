@@ -8,6 +8,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from django.utils.crypto import get_random_string
 from rokdjangoprojekt.settings import EMAIL_HOST, EMAIL_HOST_PASSWORD, EMAIL_HOST_USER, EMAIL_PORT
+from django.utils import translation
 
 from .models import Ucitelj
 from django.contrib.auth.models import User
@@ -32,11 +33,13 @@ def send_registration_emails(modeladmin, request, queryset):
         uid = urlsafe_base64_encode(force_bytes(user.pk))
 
         # Link za ponastavitev gesla
-        reset_link = request.build_absolute_uri(
-            reverse('password_reset_confirm', kwargs={'uidb64': uid, 'token': token})
-        )
+        with translation.override('sl'):
+            reset_path = reverse(
+                'password_reset_confirm',
+                kwargs={'uidb64': uid, 'token': token}
+            )
 
-        
+        reset_link = request.build_absolute_uri(reset_path)
 
         # Poslji e-mail
         username = EMAIL_HOST_USER
